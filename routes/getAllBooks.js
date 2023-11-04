@@ -20,6 +20,7 @@ router.post(`/`, async (req, res) => {
     title: req.body.title,
     ratings: parseInt(req.body.ratings),
     notes: req.body.notes,
+    detailed : req.body.detailed,
   });
   await newBook
     .save()

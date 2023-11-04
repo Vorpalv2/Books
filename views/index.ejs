@@ -27,7 +27,10 @@
   <body>
     <main class="Container">
       <h1><a href="">AAKASH</a></h1>
-      <h2>BOOKS I'VE READ</h2>
+      <div class="subHeadingContainer">
+        <h2>BOOKS I'VE READ</h2>
+        <button class="button" type="submit">Add New Book</button>
+      </div>
       <p>
         Tiny summary but detailed notes for each. Use the ISBN number to find it
         from your local library or anywhere else. This page will constantly
@@ -65,10 +68,10 @@
         </div>
       </div>
       <p><%= element.notes %></p>
-      <div class="buttons">
-        <button type="submit">Read More</button>
-        <button type="submit">Edit</button>
-        <button type="submit">Delete</button>
+      <div class="buttonContainer">
+        <button class="button" type="submit">Read More</button>
+        <button class="button" type="submit">Edit</button>
+        <button class="button" type="submit">Delete</button>
       </div>
       <hr />
       <% }) %>

@@ -49,15 +49,10 @@ h2 {
   color: #080;
 }
 
-/* h1:hover {
-  color: white;
-} */
-p {
-  font-size: 20px;
-  /* letter-spacing: 0.5px; */
-  line-height: 25px;
-  /* font-weight: normal; */
-  /* font-weight: 100; */
+.subHeadingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Container {
@@ -72,6 +67,7 @@ hr {
   width: 100%;
   padding: 0;
   margin: 0;
+  border-color: #080;
 }
 
 h3 {
@@ -116,9 +112,27 @@ img {
   color: grey;
 }
 
-.buttons {
+.buttonContainer {
   display: flex;
   justify-content: space-evenly;
   padding: 10px;
   margin: 5px;
+  margin-bottom: 20px;
+}
+
+.button {
+  cursor: pointer;
+  height: 25px;
+  font-family: valkyrie_c4;
+  font-weight: bold;
+  padding: 5px 10px;
+  color: black;
+  background-color: white;
+  border-radius: 5%;
+  border: none;
+}
+
+.button:hover {
+  background-color: #aaf;
+  transform: translateY(5px);
 }
