@@ -34,7 +34,6 @@ router.post(`/`, async (req, res) => {
 
 router.get(`/`, async (req, res) => {
   const data = await booksCollection.find({});
-  console.log(data)
   res.render("index.ejs", { data: data });
 });
 
