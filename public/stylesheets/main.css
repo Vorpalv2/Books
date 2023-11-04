@@ -70,6 +70,9 @@ hr {
   border-color: #080;
 }
 
+p {
+  font-size: 1.3rem;
+}
 h3 {
   font-family: valkyrie_c4;
   margin-top: 0px;
