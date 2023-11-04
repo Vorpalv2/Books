@@ -17,10 +17,33 @@ body {
   color: white;
 }
 
-h1,
+h1 {
+  font-family: valkyrie_c4;
+  font-size: 3rem;
+  line-height: 5px;
+  letter-spacing: 3px;
+  color: #080;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #080;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+.boldText {
+  font-weight: bolder;
+  font-size: 1.5rem;
+  color: #aaf;
+}
+
 h2 {
   font-family: valkyrie_c4;
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 5px;
   letter-spacing: 3px;
   color: #080;
