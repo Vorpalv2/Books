@@ -47,7 +47,8 @@ router.get(`/`, async (req, res) => {
   // });
   res.render("index.ejs", {
     data: foundItems,
-    src: `https://covers.openlibrary.org/b/isbn/${foundItems.isbn}-M.jpg`,
+    isbn: foundItems.isbn,
+    // src: `https://covers.openlibrary.org/b/isbn/${foundItems.isbn}-M.jpg`,
   });
 });
 
