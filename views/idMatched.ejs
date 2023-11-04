@@ -29,14 +29,10 @@
       <h1><a href="">AAKASH</a></h1>
 
       <div class="checkFlex">
-        <img
-          src="https://covers.openlibrary.org/b/isbn/0385472579-M.jpg"
-          alt="Panel Image"
-          width="150"
-          height="150"
-        />
+        <img src="<%= src %>" alt="Panel Image" width="150" height="150" />
         <div class="checkFlex2 lowMargin">
           <h3><%= title %></h3>
+          <p class="noMargin ratingsStyle">ISBN : <%= isbn %></p>
           <p class="noMargin ratingsStyle">
             Date Read : <%= date.toLocaleDateString()%>.
           </p>

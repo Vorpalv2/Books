@@ -26,6 +26,7 @@ router.post(`/`, async (req, res) => {
     ratings: parseInt(req.body.ratings),
     notes: req.body.notes,
     detailed: req.body.detailed,
+    isbn: req.body.isbn,
   });
   await newBook
     .save()
@@ -52,7 +53,9 @@ router.get(`/:id`, async (req, res) => {
     ratings: data.ratings,
     notes: data.notes,
     detailed: data.detailed,
-    date : data.date
+    date: data.date,
+    isbn: data.isbn,
+    src: `https://covers.openlibrary.org/b/isbn/${data.isbn}-M.jpg`,
   });
 });
 

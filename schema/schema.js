@@ -9,5 +9,6 @@ const bookSchema = new mongoose.Schema({
   },
   notes: String,
   detailed: String,
+  isbn : String,
 });
 module.exports = new mongoose.model("booksCollection", bookSchema);
