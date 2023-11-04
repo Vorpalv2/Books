@@ -72,6 +72,7 @@ hr {
 
 p {
   font-size: 1.3rem;
+  line-height: 35px;
 }
 h3 {
   font-family: valkyrie_c4;
@@ -118,6 +119,7 @@ img {
 .buttonContainer {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 10px;
   margin: 5px;
   margin-bottom: 20px;

@@ -15,12 +15,17 @@ const router = express.Router();
 //   },
 // ];
 
+router.delete(`/:id`, async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+});
+
 router.post(`/`, async (req, res) => {
   newBook = await new booksCollection({
     title: req.body.title,
     ratings: parseInt(req.body.ratings),
     notes: req.body.notes,
-    detailed : req.body.detailed,
+    detailed: req.body.detailed,
   });
   await newBook
     .save()
@@ -35,16 +40,20 @@ router.post(`/`, async (req, res) => {
 
 router.get(`/`, async (req, res) => {
   const data = await booksCollection.find({});
+  console.log(typeof data);
   res.render("index.ejs", { data: data });
 });
 
 router.get(`/:id`, async (req, res) => {
   const id = req.params.id;
-  const data4 = await booksCollection.findByid(id)
-  data4.forEach((element)=>{
-    console.log(element.title)
-  })
-  res.render("idMatched.ejs", { data4: data4});
+  const data = await booksCollection.findOne({ _id: id });
+  res.render("idMatched.ejs", {
+    title: data.title,
+    ratings: data.ratings,
+    notes: data.notes,
+    detailed: data.detailed,
+    date : data.date
+  });
 });
 
 module.exports = router;

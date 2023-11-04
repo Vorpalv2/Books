@@ -3,7 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title><%= title %></title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
-  <body></body>
+  <body>
+    <main class="Container">
+      <h1><a href="">AAKASH</a></h1>
+
+      <div class="checkFlex">
+        <img
+          src="https://covers.openlibrary.org/b/isbn/0385472579-M.jpg"
+          alt="Panel Image"
+          width="150"
+          height="150"
+        />
+        <div class="checkFlex2 lowMargin">
+          <h3><%= title %></h3>
+          <p class="noMargin ratingsStyle">
+            Date Read : <%= date.toLocaleDateString()%>.
+          </p>
+          <p class="noMargin ratingsStyle">
+            How strongly I recommend it:<%= ratings %>/10
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="buttonContainer">
+        <button class="button" type="submit">Edit</button>
+        <button class="button" type="submit">Delete</button>
+      </div>
+      <hr />
+      <p><%= notes %></p>
+      <h2>Detailed Summary :</h2>
+      <p><%- detailed.replace(/\./g, '.<br />') %></p>
+    </main>
+  </body>
 </html>
