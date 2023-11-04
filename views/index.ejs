@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>book notes || Aakash</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <main class="Container">
+      <h1>AAKASH</h1>
+      <h2>BOOKS I'VE READ</h2>
+      <p>
+        Tiny summary but detailed notes for each. Use the ISBN number to find it
+        from your local library or anywhere else. This page will constantly
+        update as I read more, so bookmark it if you want to check back in a few
+        months.
+      </p>
+      <p>
+        Sorted with my top recommendations up top. Sort by title, newest, or
+        best.
+      </p>
+      <p>
+        And please read this FAQ page about these notes, if you have any
+        questions. You can also email me.
+      </p>
+      <hr />
+      <% data.forEach((element) => { %>
+      <div class="checkFlex">
+        <img
+          src="https://covers.openlibrary.org/b/isbn/0385472579-M.jpg"
+          alt="Panel Image"
+          width="150"
+          height="150"
+        />
+        <div class="checkFlex2 lowMargin">
+          <h3><%= element.title %></h3>
+          <p class="noMargin ratingsStyle">
+            Date Read : <%= element.date.toLocaleDateString()%>. How strongly I
+            recommend it:<%= element.ratings %>/10
+          </p>
+        </div>
+      </div>
+      <p>Notes: <%= element.notes %></p>
+      <% }) %>
+    </main>
+  </body>
+</html>
