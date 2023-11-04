@@ -40,9 +40,15 @@ router.post(`/`, async (req, res) => {
 });
 
 router.get(`/`, async (req, res) => {
-  const data = await booksCollection.find({});
-  console.log(typeof data);
-  res.render("index.ejs", { data: data });
+  const foundItems = await booksCollection.find({});
+  // console.log(data.title);
+  // foundItems.forEach((element) => {
+  //   console.log(element.isbn);
+  // });
+  res.render("index.ejs", {
+    data: foundItems,
+    src: `https://covers.openlibrary.org/b/isbn/${foundItems.isbn}-M.jpg`,
+  });
 });
 
 router.get(`/:id`, async (req, res) => {

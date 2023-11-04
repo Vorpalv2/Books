@@ -33,6 +33,7 @@
           Add New Book
         </button>
       </div>
+      <% console.log(src)%>
       <p>
         Tiny summary but detailed notes for each. Use the ISBN number to find it
         from your local library or anywhere else. This page will constantly
@@ -55,12 +56,7 @@
       <hr />
       <% data.forEach((element) => { %>
       <div class="checkFlex">
-        <img
-          src="https://covers.openlibrary.org/b/isbn/0385472579-M.jpg"
-          alt="Panel Image"
-          width="150"
-          height="150"
-        />
+        <img src="<%= src %>" alt="Panel Image" width="150" height="150" />
         <div class="checkFlex2 lowMargin">
           <h3><%= element.title %></h3>
           <p class="noMargin ratingsStyle">
