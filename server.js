@@ -16,3 +16,8 @@ app.listen(3000, async () => {
   console.log("connected to port 3000");
   await connectToDB();
 });
+
+
+app.get(`/`,(req,res)=>{
+  res.send("Homepage")
+})
