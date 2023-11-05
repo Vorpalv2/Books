@@ -20,3 +20,8 @@ app.listen(3000, async () => {
 app.get(`/`, (req, res) => {
   res.render("homepage.ejs");
 });
+
+
+app.get(`/`,(req,res)=>{
+  res.send("Homepage")
+})

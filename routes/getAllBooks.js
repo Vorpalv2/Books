@@ -16,23 +16,11 @@ const router = express.Router();
 // ];
 
 router.delete(`/:id`, async (req, res) => {
-  const title = req.params.id;
-  console.log(title);
-  try {
-    const result = await booksCollection.findOneAndDelete({ title: title });
-
-    if (!result) {
-      return res.status(404).json({ message: "Document not found" });
-    }
-
-    return res.status(200).json({ message: "Document deleted successfully" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "An error occurred" });
-  }
+  const id = req.params.id;
+  console.log(id);
 });
 
-router.post(`/newBook`, async (req, res) => {
+router.post(`/`, async (req, res) => {
   newBook = await new booksCollection({
     title: req.body.title,
     ratings: parseInt(req.body.ratings),
@@ -60,31 +48,19 @@ router.get(`/`, async (req, res) => {
   });
 });
 
+
 router.get(`/:id`, async (req, res) => {
   const id = req.params.id;
-  console.log(typeof id);
-  console.log("getting this route");
-  const data = await booksCollection.findOne({ isbn: id });
-
-  if (data) {
-    try {
-      res.render("idMatched.ejs", {
-        title: data.title,
-        ratings: data.ratings,
-        notes: data.notes,
-        detailed: data.detailed,
-        date: data.date,
-        isbn: data.isbn,
-        src: `https://covers.openlibrary.org/b/isbn/${data.isbn}-M.jpg`,
-      });
-    } catch (error) {
-      console.error({ error: "error rendering the ejs file" });
-    }
-  } else {
-    const foundItems = await booksCollection.find({});
-    res.render("index.ejs", { data: foundItems });
-    res.redirect("/getAllBooks");
-  }
+  const data = await booksCollection.findOne({ _id: id });
+  res.render("idMatched.ejs", {
+    title: data.title,
+    ratings: data.ratings,
+    notes: data.notes,
+    detailed: data.detailed,
+    date: data.date,
+    isbn: data.isbn,
+    src: `https://covers.openlibrary.org/b/isbn/${data.isbn}-M.jpg`,
+  });
 });
 
 module.exports = router;
