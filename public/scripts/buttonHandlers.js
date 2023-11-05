@@ -24,8 +24,8 @@ const viewButtons = document.querySelectorAll(".view");
 viewButtons.forEach((button) => {
   button.addEventListener("click", async function () {
     let buttonISBN = button.getAttribute("name");
-    // console.log("button name is " + buttonISBN);
-    // console.log(typeof buttonISBN);
+    console.log("button name is " + buttonISBN);
+    console.log(typeof buttonISBN);
     try {
       await fetch(`/getAllBooks/${buttonISBN}`);
       console.log("fetched successful");

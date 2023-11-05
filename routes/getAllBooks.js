@@ -47,9 +47,9 @@ router.get(`/`, async (req, res) => {
   });
 });
 
-router.get(`/:id`, async (req, res) => {
-  const id = req.params.id;
-  const data = await booksCollection.findOne({ _id: id });
+router.get(`/:ISBN`, async (req, res) => {
+  const ISBN = req.params.ISBN;
+  const data = await booksCollection.findOne({isbn:ISBN});
   res.render("idMatched.ejs", {
     title: data.title,
     ratings: data.ratings,
