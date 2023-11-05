@@ -22,7 +22,6 @@
       sizes="16x16"
       href="/images/favicon-16x16.png"
     />
-    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
     <main class="Container">
@@ -43,12 +42,20 @@
       <hr />
       <div class="buttonContainer">
         <button class="button" type="submit">Edit</button>
-        <button class="button" type="submit">Delete</button>
+        <button
+          class="delete button"
+          name="<%= title %>"
+          id="delete"
+          type="submit"
+        >
+          <%= title %>
+        </button>
       </div>
       <hr />
       <p><%= notes %></p>
       <h2>Detailed Summary :</h2>
       <p><%- detailed.replace(/\./g, '.<br />') %></p>
     </main>
+    <script src="/scripts/buttonHandlers.js"></script>
   </body>
 </html>

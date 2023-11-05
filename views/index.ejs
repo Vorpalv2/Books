@@ -22,7 +22,6 @@
       sizes="16x16"
       href="/images/favicon-16x16.png"
     />
-    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
     <main class="Container">
@@ -67,9 +66,26 @@
       </div>
       <p><%= element.notes %></p>
       <div class="buttonContainer">
-        <button class="button" type="submit">Read More</button>
-        <button class="button" type="submit">Edit</button>
-        <button class="button" type="submit">Delete</button>
+        <button class="button view" name="<%= element.isbn %>" type="submit">
+          Read More
+        </button>
+        <button
+          class="button edit"
+          id="editID"
+          name="<%= element.title%>"
+          class="edit"
+          type="submit"
+        >
+          Edit
+        </button>
+        <button
+          class="delete button"
+          name="<%= element.title%>"
+          id="delete"
+          type="submit"
+        >
+          Delete
+        </button>
       </div>
       <hr />
       <% }) %>
