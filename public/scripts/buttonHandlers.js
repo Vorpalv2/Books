@@ -2,10 +2,10 @@ const allButtons = document.querySelectorAll(".delete");
 
 allButtons.forEach((button) => {
   button.addEventListener("click", async function () {
-    let buttonName = button.getAttribute("name");
-    console.log("button Name is " + buttonName);
+    let buttonISBN = button.getAttribute("name");
+    console.log("button ISBN is " + buttonISBN);
 
-    let response = await fetch(`/getAllBooks/${buttonName}`, {
+    let response = await fetch(`/getAllBooks/${buttonISBN}`, {
       method: "DELETE",
     });
 
@@ -38,7 +38,6 @@ viewButtons.forEach((button) => {
 const newBook = document.getElementById("addNewBook");
 
 newBook.addEventListener("click", async function () {
-
-  await fetch("/getAllBooks/newBook",{method:"POST"})
+  await fetch("/getAllBooks/newBook", { method: "POST" });
   window.open("https://www.google.com");
 });
