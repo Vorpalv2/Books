@@ -83,7 +83,9 @@ h3 {
 }
 
 img {
-  display: inline;
+  height: 150px;
+  width: 150px;
+  display: block;
   padding-top: 20px;
   position: relative;
 }

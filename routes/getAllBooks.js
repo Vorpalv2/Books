@@ -4,15 +4,15 @@ const router = express.Router();
 
 router.delete(`/:ISBN`, async (req, res) => {
   const ISBN = req.params.ISBN;
-  console.log("ISBN is " + ISBN);
+  console.log("From Delete Route : ISBN is " + ISBN);
   try {
     let response = await booksCollection.findOneAndDelete({ isbn: ISBN });
     if (response) {
-      res.sendStatus(200);
+      res.status(200).send("deleted");
     } else if ((response = {})) {
-      res.sendStatus(404);
+      res.status(404).send("no data found");
     } else {
-      res.sendStatus(404);
+      res.status(404).send("error");
     }
   } catch (error) {
     console.error({ error: error });
