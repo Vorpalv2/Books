@@ -2,27 +2,21 @@ const express = require(`express`);
 const booksCollection = require("../schema/schema");
 const router = express.Router();
 
-
 router.delete(`/:ISBN`, async (req, res) => {
   const ISBN = req.params.ISBN;
   console.log("ISBN is " + ISBN);
-try {
-  let response = await  booksCollection.findOneAndDelete({isbn : ISBN})
-  if(response){
-    res.sendStatus(200)
-    alert("Deleted Successfully")
+  try {
+    let response = await booksCollection.findOneAndDelete({ isbn: ISBN });
+    if (response) {
+      res.sendStatus(200);
+    } else if ((response = {})) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    console.error({ error: error });
   }
-  else if (response = {}){
-    res.sendStatus(400)
-    alert("Data Not Occured")
-  }
-  else{
-    alert("some error occured")
-  }
-} catch (error) {
-  console.error({"error" : error})
-}
-
 });
 
 router.post(`/newBook`, async (req, res) => {
@@ -52,7 +46,6 @@ router.get(`/`, async (req, res) => {
     // isbn: foundItems.isbn,
   });
 });
-
 
 router.get(`/:id`, async (req, res) => {
   const id = req.params.id;
