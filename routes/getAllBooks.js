@@ -21,11 +21,11 @@ router.delete(`/:ISBN`, async (req, res) => {
 
 router.post(`/newBook`, async (req, res) => {
   newBook = await new booksCollection({
-    title: req.body.title,
-    ratings: parseInt(req.body.ratings),
-    notes: req.body.notes,
-    detailed: req.body.detailed,
-    isbn: req.body.isbn,
+    title: req.body.title||"placeholderTitle",
+    ratings: parseInt(req.body.ratings)||0,
+    notes: req.body.notes||"placeholderNotes",
+    detailed: req.body.detailed||"placeholderDetails",
+    isbn: req.body.isbn||"placeholderISBN",
   });
   await newBook
     .save()
