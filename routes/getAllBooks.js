@@ -2,6 +2,35 @@ const express = require(`express`);
 const booksCollection = require("../schema/schema");
 const router = express.Router();
 
+router.put(`/:ISBN`,async(req,res)=>{
+  const ISBN = req.params.ISBN;
+  let newData ={
+    title: req.body.title,
+    ratings: parseInt(req.body.ratings),
+    notes: req.body.notes,
+    detailed: req.body.detailed,
+    isbn: req.body.isbn,
+  }
+  try {
+    let response = await booksCollection.findOneAndReplace({isbn : ISBN},newData)
+
+    if(response){
+      res.send("patched into Database Data with ISBN" + ISBN).status(200)
+      }
+      else{
+       res.send("error occured with getting database").status(400)
+      }
+   } catch (error) {
+    console.log(error)
+   }
+
+
+
+//get the data
+//change it with new data
+//update the data to database
+})
+
 router.delete(`/:ISBN`, async (req, res) => {
   const ISBN = req.params.ISBN;
   console.log("From Delete Route : ISBN is " + ISBN);
