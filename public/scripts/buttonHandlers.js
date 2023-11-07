@@ -38,6 +38,7 @@ viewButtons.forEach((button) => {
 const newBook = document.getElementById("addNewBook");
 
 newBook.addEventListener("click", async function () {
+  console.log("add new Book button clicked");
   await fetch("/getAllBooks/newBook", { method: "POST" });
   window.open("https://www.google.com");
 });

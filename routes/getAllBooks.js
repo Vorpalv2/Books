@@ -2,6 +2,17 @@ const express = require(`express`);
 const booksCollection = require("../schema/schema");
 const router = express.Router();
 
+const newBookCheckData = {
+  title : "The Gardener and the Carpenter - by Alison Gopnik",
+  ratings : parseInt("10"),
+  notes : "Great philosophy of parenting, from a grandmother who is a wise professor of philosophy and a developmental psychologist. Such a beautiful mindset and outlook. Required reading for every parent. Re-read it often as a necessary reminder",
+  details : "I would not evaluate the quality of an old friendship by whether my friend was happier or more successful than when we first met.The most important rewards of being a parent come from the moment-by-moment physical and psychological joy of being with this particular child, and in that child’s moment-by-moment joy in being with you.Love’s purpose is not to shape our beloved’s destiny, but to help them shape their own.Don't change the people we love, but give them what they need to thrive.",
+  isbn : "0374229708",
+  date: Date.now(),
+  _id: crypto.randomUUID()
+
+}
+
 router.put(`/:ISBN`,async(req,res)=>{
   const ISBN = req.params.ISBN;
   let newData ={
@@ -49,13 +60,14 @@ router.delete(`/:ISBN`, async (req, res) => {
 });
 
 router.post(`/newBook`, async (req, res) => {
-  newBook = await new booksCollection({
-    title: req.body.title||"placeholderTitle",
-    ratings: parseInt(req.body.ratings)||0,
-    notes: req.body.notes||"placeholderNotes",
-    detailed: req.body.detailed||"placeholderDetails",
-    isbn: req.body.isbn||"placeholderISBN",
+  let newBook = await new booksCollection({
+    title: req.body.title||newBookCheckData.title,
+    ratings: parseInt(req.body.ratings)||newBookCheckData.ratings,
+    notes: req.body.notes||newBookCheckData.notes,
+    detailed: req.body.detailed||newBookCheckData.detailed,
+    isbn: req.body.isbn||newBookCheckData.isbn,
   });
+  console.log("From POST Route : ISBN is " + newBook.isbn);
   await newBook
     .save()
     .then(() => {
@@ -72,12 +84,13 @@ router.get(`/`, async (req, res) => {
 
   res.render("index.ejs", {
     data: foundItems,
-    // isbn: foundItems.isbn,
   });
 });
 
 router.get(`/:ISBN`, async (req, res) => {
   const ISBN = req.params.ISBN;
+  console.log(`From Get By ID route ISBN is : ${ISBN}`)
+
   const data = await booksCollection.findOne({isbn:ISBN});
   res.render("idMatched.ejs", {
     title: data.title,
